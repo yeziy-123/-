@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我帅吗</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f6d3fb 0%, #fceabb 100%);
+        }
+
+        .box {
+            /* 去掉所有边框+轮廓 */
+            background: transparent;
+            padding: 60px 80px;
+            text-align: center;
+            border: none;
+            box-shadow: none;
+        }
+
+        .title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: bold;
+            letter-spacing: 4px;
+        }
+
+        .btn-wrap {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            position: relative;
+        }
+
+        button {
+            padding: 14px 36px;
+            font-size: 20px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #42e695, #3bb2b8);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(66, 95, 149, 0.2);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.2);
+            position: relative;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #ff6b81;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="title">我帅吗</div>
+        <div class="btn-wrap">
+            <button class="btn-yes" onclick="showThanks()">帅</button>
+            <button class="btn-no" id="noBtn">不帅</button>
+        </div>
+        <div class="result" id="res">谢谢～😎</div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const resText = document.getElementById('res');
+
+        function moveBtn() {
+            const maxX = window.innerWidth - 120;
+            const maxY = window.innerHeight - 80;
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+            noBtn.style.position = "absolute";
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        }
+
+        noBtn.addEventListener('mouseover', moveBtn);
+        noBtn.addEventListener('touchstart', moveBtn);
+
+        function showThanks(){
+            resText.style.display = "block";
+        }
+    </script>
+</body>
+</html>
